@@ -1,7 +1,7 @@
 <project name="ForAnt" basedir="" default="generate.service">
     <property environment="env"/>
     <property name="build.dir" value="build"/>
-    <property name="tomcat.dir" value="/aar"/>
+    <property name="tomcat.dir" value="/Apache/tomcat-8.0/webapps/axis2/WEB-INF/services"/>
     <path id="axis2.classpath">
         <fileset dir="${basedir}/lib">
             <include name="*.jar"/>
@@ -23,7 +23,7 @@
             <fileset dir="${basedir}/resources">
                 <include name="**/*.xml"/>
             </fileset>
-            <fileset dir="${basedir}/src/services/">
+            <fileset dir="${basedir}/src/ws/">
                 <include name="**/*.wsdl"/>
             </fileset>
             <fileset dir="${basedir}/src/">
