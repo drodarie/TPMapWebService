@@ -1,3 +1,5 @@
+import metier.Pays;
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
@@ -6,17 +8,21 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
+import ws.PaysWebService;
 
+import java.util.List;
 import java.util.Map;
 
 /**
  * Created by Pierre on 08/09/2015.
  */
-public class Main {
+public class Main {/*
     private static final SessionFactory ourSessionFactory;
-    private static final ServiceRegistry serviceRegistry;
+    private static final ServiceRegistry serviceRegistry;*/
 
-    static {
+    static Logger log = Logger.getLogger(Main.class);
+
+    /*static {
         try {
             Configuration configuration = new Configuration();
             configuration.configure();
@@ -30,10 +36,10 @@ public class Main {
 
     public static Session getSession() throws HibernateException {
         return ourSessionFactory.openSession();
-    }
+    }*/
 
     public static void main(final String[] args) throws Exception {
-        final Session session = getSession();
+        /*final Session session = getSession();
         try {
             System.out.println("querying all the managed entities...");
             final Map metadataMap = session.getSessionFactory().getAllClassMetadata();
@@ -48,6 +54,14 @@ public class Main {
             }
         } finally {
             session.close();
+        }*/
+
+        log.info("Coucou");
+
+        PaysWebService service = new PaysWebService();
+        List<Pays> listPays = service.obtainListePays();
+        for (Pays pays: listPays) {
+            System.out.println(pays.getNomPays());
         }
     }
 }

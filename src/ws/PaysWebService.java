@@ -6,7 +6,6 @@ import metier.Pays;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,24 +13,11 @@ import java.util.List;
  */
 @WebService
 public class PaysWebService {
-
     @WebMethod
-    public String sayHelloWorldFrom(String from) {
-        String result = "Hello, world, from " + from;
-        System.out.println(result);
-        return result;
-    }
-
-    @WebMethod
-    public List<String> obtainListePays(){
+    public List<Pays> obtainListePays(){
         PaysDAO paysDAO = new PaysDAOImpl();
         List<Pays> listPays = paysDAO.getAllPays();
-        List<String> listNomsPays = new ArrayList<>();
 
-        for (Pays listPay : listPays) {
-            listNomsPays.add(listPay.toString());
-        }
-
-        return listNomsPays;
+        return listPays;
     }
 }

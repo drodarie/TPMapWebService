@@ -20,7 +20,6 @@ public class PaysDAOImpl implements PaysDAO{
 
         List<Pays> pays = query.list();
         currentSession.close();
-
         return pays;
     }
 }
