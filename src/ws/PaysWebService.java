@@ -16,8 +16,12 @@ public class PaysWebService {
     @WebMethod
     public List<Pays> obtainListePays(){
         PaysDAO paysDAO = new PaysDAOImpl();
-        List<Pays> listPays = paysDAO.getAllPays();
+        return paysDAO.getAllPays();
+    }
 
-        return listPays;
+    @WebMethod
+    public Pays getPays(String name) {
+        PaysDAO paysDAO = new PaysDAOImpl();
+        return paysDAO.getPays(name);
     }
 }
